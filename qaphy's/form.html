@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact form</title>
+    <link rel="stylesheet" href="formstyle.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/40491340bc.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar__form">
+        <div class="navbar__container">
+            <a href="\" id="navbar__logo"><i class="fa-solid fa-gem"></i></i> QAPHY'S</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="index.html" class="navbar__links">home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="products.html" class="navbar__links">Products</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="form.html" class="button">message</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset();
+        return false">
+            <h3>Get in touch</h3>
+            
+            <input type="text" id="name" 
+            placeholder="Your name" required>
+            
+            <input type="email" id="email" 
+            placeholder="Email ID" required>
+            
+            <input type="text" id="phone" 
+            placeholder="Phone number" required>
+            
+            <textarea id="message" rows="4" 
+            placeholder="How can we help"></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "kiarieian18@gmail.com",
+    Password : "1BD1C7BFB941937288755FECB700B64467C4",
+    To : 'qaphys8@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "Customer Inquiry",
+    Body : "Name: " + document.getElementById("name").value
+     + "<br> Email: " + document.getElementById("email").value
+     + "<br> Phone no: " + document.getElementById("phone").value
+     + "<br> Message: " + document.getElementById("message").value
+}).then(
+  message => alert("message sent successfully")
+);
+        }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
